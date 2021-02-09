@@ -1,0 +1,12 @@
+---
+- name: "PLAYBOOK        : Start Playbook for PiStack."
+  hosts: server
+
+  tasks:
+    - name: "PLAYBOOK        : Assure Accessability  to Remote Server using Ansible User."
+      block:
+        - name: "PLAYBOOK        : Ping using Ansible User."
+          ansible.builtin.ping:
+      rescue:
+        - name: "PLAYBOOK        : Ping using ROOT User."
+          ansible.builtin.ping: 

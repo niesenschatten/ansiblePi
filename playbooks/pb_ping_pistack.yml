@@ -1,6 +1,5 @@
 - name: "PLAYBOOK        : Start Playbook for PiStack."
   hosts: server
-  remote_user: root
 
   tasks:
     - name: "PLAYBOOK        : Ping using regular Ansible User."

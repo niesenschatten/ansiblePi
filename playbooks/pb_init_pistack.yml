@@ -35,9 +35,12 @@
         key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
         state: present
       ignore_errors: "{{ ansible_check_mode }}"
-
+# For openSuse use systemd ; got it by trying LOL
     - name: Set a hostname
       ansible.builtin.hostname:
         name: "{{ inventory_hostname }}"
         use: systemd
-# For openSuse use systemd ; got it by trying LOL
+
+    - name: "PLAYBOCK        : Set TimeZone."
+      community.general.timezone:
+        name: Europe/Zurich

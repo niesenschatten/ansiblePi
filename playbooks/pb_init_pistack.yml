@@ -38,5 +38,6 @@
 
     - name: Set a hostname
       ansible.builtin.hostname:
-        name: mypi
+        name: "{{ inventory_hostname }}"
         use: systemd
+# For openSuse use systemd ; got it by trying LOL

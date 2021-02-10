@@ -2,19 +2,41 @@
 - name: "PLAYBOOK        : Start Playbook for PiStack."
   hosts: server
   gather_facts: no  
-  vars:
-    ansible_host_key_checking: false
 
   tasks:
     - name: "PLAYBOOK        : Assure Accessability  to Remote Server using Ansible User."
       block:
         - name: "PLAYBOOK        : Ping using regular Ansible User."
           become_user: ansible
-          ping:
-
-        - name: Force a failure 
-          ansible.builtin.command: /bin/false
+          ping: 
 
       rescue:
         - name: "PLAYBOOK        : Ping using Root User."
-          ping:
+          ping: 
+
+        - name: "PLAYBOCK        : Mange Ansible Group."
+          group: 
+            name: ansible
+            git: 20020
+            state: present
+
+        - name: "PLAYBOCK        : Mange Ansible User."
+          user:
+            name: ansible
+            group: ansible
+            uid: 20020
+            state: present
+            
+        - name: "PLAYBOCK        : Mange Ansible User."
+          lineinfile:
+            path: /etc/sudoers.d/ansible
+            line: 'ansible ALL=(ALL) NOPASSWD: ALL'
+            mode: 0440
+            create: yes
+            state: present
+
+        - name: "PLAYBOCK        : Set Authorized Key."
+          authorized_key:
+            user: devops
+            state: present
+            key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"

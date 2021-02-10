@@ -1,0 +1,6 @@
+---
+- name: "PLAYBOOK        : Start Playbook to Shutdown PiStack."
+  hosts: server
+
+    - name: "PLAYBOOK        : Shutdown in one Minute."
+      ansible.builtin.command: "shutdown -h +1"

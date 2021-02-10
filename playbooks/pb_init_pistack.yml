@@ -35,3 +35,12 @@
         key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
         state: present
       ignore_errors: "{{ ansible_check_mode }}"
+
+    - debug:
+      var: inventory_hostname
+    - debug:
+      var: inventory_nodename
+
+    - name: Set a hostname
+      ansible.builtin.hostname:
+        name: "{inventory_hostname}"

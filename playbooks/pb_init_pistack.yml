@@ -44,3 +44,6 @@
     - name: "PLAYBOOK        : Set TimeZone."
       community.general.timezone:
         name: Europe/Zurich
+
+    - name: "PLAYBOOK        : Set Keybord."
+      ansible.builtin.command: "yast2 keyboard set help" "yast2 keyboard set 'layout=german-ch'"

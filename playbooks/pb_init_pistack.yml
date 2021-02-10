@@ -38,7 +38,7 @@
 
         - name: "PLAYBOCK        : Set Authorized Key."
           authorized_key:
-            user: devops
+            user: ansible
             key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
             state: present
           ignore_errors: "{{ ansible_check_mode }}"

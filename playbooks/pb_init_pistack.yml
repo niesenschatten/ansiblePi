@@ -6,17 +6,14 @@
   tasks:
     - name: "PLAYBOOK        : Assure Accessability  to Remote Server using Ansible User."
       block:
-        - name: Print a message
-          ansible.builtin.debug:
-            msg: 'I execute normally' 
+        - name: "PLAYBOOK        : Ping using regular Ansible User."
+          ping:
 
         - name: Force a failure 
           ansible.builtin.command: /bin/false
 
-        - name: Never print this
-          ansible.builtin.debug:
-            msg: 'I never execute, due to the above task failing, :-('
       rescue:
-        - name: Print when errors
-          ansible.builtin.debug:
-            msg: 'I caught an error, can do stuff here to fix it, :-)'
+        - name: "PLAYBOOK        : Ping using Root User."
+          ansible_user: root
+          ansible_password: linux
+          ping:

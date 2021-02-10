@@ -41,4 +41,4 @@
             user: devops
             key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
             state: present
-            ignore_errors: "{{ ansible_check_mode }}"
+          ignore_errors: "{{ ansible_check_mode }}"

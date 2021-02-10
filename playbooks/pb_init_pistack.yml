@@ -3,7 +3,7 @@
   hosts: server
 
   pre_tasks:
-    - name: "PLAYBOOK        : Ping {inventory_hostname} using Root User."
+    - name: "PLAYBOOK        : Ping using Root User."
       ping: 
 
   tasks:
@@ -39,3 +39,4 @@
     - name: Set a hostname
       ansible.builtin.hostname:
         name: "{inventory_hostname}"
+        use: sles

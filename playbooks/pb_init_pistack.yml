@@ -21,4 +21,4 @@
       rescue:
         - name: Print when errors
           ansible.builtin.debug:
-            msg: 'I caught an error, can do stuff here to fix it, :-)
+            msg: 'I caught an error, can do stuff here to fix it, :-)'

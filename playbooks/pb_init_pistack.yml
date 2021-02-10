@@ -20,7 +20,7 @@
         home: 
         uid: 20020
         state: present
-            
+
     - name: "PLAYBOCK        : Mange Sudoer for Ansible User."
       lineinfile:
         path: /etc/sudoers.d/ansible
@@ -32,6 +32,5 @@
     - name: "PLAYBOCK        : Set Authorized Key."
       authorized_key:
         user: ansible
-        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+        key: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
         state: present
-      ignore_errors: "{{ ansible_check_mode }}"

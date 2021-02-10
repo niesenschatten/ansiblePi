@@ -9,5 +9,7 @@
         - name: "PLAYBOOK        : Ping using Ansible User."
           ansible.builtin.ping:
       rescue:
+        - ansible.builtin.debug:
+          msg: 'PLAYBOOK        : Rescue'
         - name: "PLAYBOOK        : Ping using ROOT User."
           ansible.builtin.ping: 

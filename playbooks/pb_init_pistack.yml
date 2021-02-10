@@ -18,7 +18,7 @@
         - name: "PLAYBOCK        : Mange Ansible Group."
           group: 
             name: ansible
-            git: 20020
+            gid: 20020
             state: present
 
         - name: "PLAYBOCK        : Mange Ansible User."
@@ -39,5 +39,5 @@
         - name: "PLAYBOCK        : Set Authorized Key."
           authorized_key:
             user: devops
-            state: present
             key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+            state: present

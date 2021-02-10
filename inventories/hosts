@@ -2,11 +2,9 @@
 ansiblePi    ansible_connection=local
 
 [server]
-server1Pi    ansible_connection=ssh    ansible_user=ansible ansible_password=ansible
-server2Pi    ansible_connection=ssh    ansible_user=ansible ansible_password=ansible
-server3Pi    ansible_connection=ssh    ansible_user=ansible ansible_password=ansible
-
-
+server1Pi    
+server2Pi    
+server3Pi     
 
 
 # This is the default ansible 'hosts' file.

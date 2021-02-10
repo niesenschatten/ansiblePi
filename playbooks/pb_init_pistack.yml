@@ -9,6 +9,7 @@
     - name: "PLAYBOOK        : Assure Accessability  to Remote Server using Ansible User."
       block:
         - name: "PLAYBOOK        : Ping using regular Ansible User."
+          become_user: ansible
           ping:
 
         - name: Force a failure 
@@ -16,5 +17,4 @@
 
       rescue:
         - name: "PLAYBOOK        : Ping using Root User."
-          remote_user: root
           ping:

@@ -7,13 +7,13 @@
       ping: 
 
   tasks:
-    - name: "PLAYBOCK        : Mange Ansible Group."
+    - name: "PLAYBOOK        : Mange Ansible Group."
       group: 
         name: ansible
         gid: 20020
         state: present
 
-    - name: "PLAYBOCK        : Mange Ansible User."
+    - name: "PLAYBOOK        : Mange Ansible User."
       user:
         name: ansible
         group: ansible
@@ -21,7 +21,7 @@
         uid: 20020
         state: present
             
-    - name: "PLAYBOCK        : Mange Sudoers for Ansible User."
+    - name: "PLAYBOOK        : Mange Sudoers for Ansible User."
       lineinfile:
         path: /etc/sudoers.d/ansible
         line: 'ansible ALL=(ALL) NOPASSWD: ALL'
@@ -29,14 +29,14 @@
         create: yes
         state: present
 
-    - name: "PLAYBOCK        : Set Authorized Key."
+    - name: "PLAYBOOK        : Set Authorized Key."
       authorized_key:
         user: ansible
         key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
         state: present
       ignore_errors: "{{ ansible_check_mode }}"
 # For openSuse use systemd ; got it by trying LOL
-    - name: "PLAYBOCK        : Set hostname."
+    - name: "PLAYBOOK        : Set hostname."
       ansible.builtin.hostname:
         name: "{{ inventory_hostname }}"
         use: systemd

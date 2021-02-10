@@ -7,6 +7,7 @@
     - name: "PLAYBOOK        : Assure Accessability  to Remote Server using Ansible User."
       block:
         - name: "PLAYBOOK        : Ping using regular Ansible User."
+          become: yes
           become_user: ansible
           ping: 
 

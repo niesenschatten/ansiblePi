@@ -46,4 +46,4 @@
         name: Europe/Zurich
 
     - name: "PLAYBOOK        : Set Keybord."
-        ansible.builtin.command: "yast2 keyboard set 'layout=german-ch'"
+        ansible.builtin.command: yast2 keyboard set help

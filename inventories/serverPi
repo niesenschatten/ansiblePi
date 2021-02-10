@@ -1,4 +1,4 @@
 [server]
-server1Pi    
-server2Pi    
-server3Pi    
+server1Pi  ansible_connection=ssh    ansible_user=root ansible_password=linux   
+server2Pi  ansible_connection=ssh    ansible_user=root ansible_password=linux  
+server3Pi  ansible_connection=ssh    ansible_user=root ansible_password=linux   

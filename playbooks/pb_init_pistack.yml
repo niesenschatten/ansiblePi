@@ -2,7 +2,8 @@
 - name: "PLAYBOOK        : Start Playbook for PiStack."
   hosts: server
   gather_facts: no  
-  host_key_checking: false
+  vars:
+    ansible_host_key_checking: false
 
   tasks:
     - name: "PLAYBOOK        : Assure Accessability  to Remote Server using Ansible User."

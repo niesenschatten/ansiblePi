@@ -36,10 +36,10 @@
         state: present
       ignore_errors: "{{ ansible_check_mode }}"
 
-    - debug:
-      var: inventory_hostname
-    - debug:
-      var: inventory_nodename
+    - ansible.builtin.debug:
+      msg: 
+        - System {{ inventory_hostname }} hostname
+        - System {{ inventory_nodename }} NODE
 
     - name: Set a hostname
       ansible.builtin.hostname:

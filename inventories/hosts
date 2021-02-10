@@ -2,9 +2,9 @@
 ansiblePi    ansible_connection=local
 
 [server]
-server1Pi    
-server2Pi    
-server3Pi     
+server1Pi   host_key_checking=false 
+server2Pi   host_key_checking=false 
+server3Pi   host_key_checking=false  
 
 
 # This is the default ansible 'hosts' file.

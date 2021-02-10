@@ -1,7 +1,6 @@
 ---
 - name: "PLAYBOOK        : Start Playbook for PiStack."
   hosts: server
-  gather_facts: no  
 
   tasks:
     - name: "PLAYBOOK        : Assure Accessability  to Remote Server using Ansible User."
@@ -25,10 +24,11 @@
           user:
             name: ansible
             group: ansible
+            home: 
             uid: 20020
             state: present
             
-        - name: "PLAYBOCK        : Mange Ansible User."
+        - name: "PLAYBOCK        : Mange Sudoer for Ansible User."
           lineinfile:
             path: /etc/sudoers.d/ansible
             line: 'ansible ALL=(ALL) NOPASSWD: ALL'
@@ -41,3 +41,4 @@
             user: devops
             key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
             state: present
+            ignore_errors: "{{ ansible_check_mode }}"

@@ -2,43 +2,36 @@
 - name: "PLAYBOOK        : Start Playbook for PiStack."
   hosts: server
 
+  pre_tasks:
+    - name: "PLAYBOOK        : Ping using Root User."
+      ping: 
+
   tasks:
-    - name: "PLAYBOOK        : Assure Accessability  to Remote Server using Ansible User."
-      block:
-        - name: "PLAYBOOK        : Ping using regular Ansible User."
-          become: yes
-          become_user: ansible
-          ping: 
+    - name: "PLAYBOCK        : Mange Ansible Group."
+      group: 
+        name: ansible
+        gid: 20020
+        state: present
 
-      rescue:
-        - name: "PLAYBOOK        : Ping using Root User."
-          ping: 
-
-        - name: "PLAYBOCK        : Mange Ansible Group."
-          group: 
-            name: ansible
-            gid: 20020
-            state: present
-
-        - name: "PLAYBOCK        : Mange Ansible User."
-          user:
-            name: ansible
-            group: ansible
-            home: 
-            uid: 20020
-            state: present
+    - name: "PLAYBOCK        : Mange Ansible User."
+      user:
+        name: ansible
+        group: ansible
+        home: 
+        uid: 20020
+        state: present
             
-        - name: "PLAYBOCK        : Mange Sudoer for Ansible User."
-          lineinfile:
-            path: /etc/sudoers.d/ansible
-            line: 'ansible ALL=(ALL) NOPASSWD: ALL'
-            mode: 0440
-            create: yes
-            state: present
+    - name: "PLAYBOCK        : Mange Sudoer for Ansible User."
+      lineinfile:
+        path: /etc/sudoers.d/ansible
+        line: 'ansible ALL=(ALL) NOPASSWD: ALL'
+        mode: 0440
+        create: yes
+        state: present
 
-        - name: "PLAYBOCK        : Set Authorized Key."
-          authorized_key:
-            user: ansible
-            key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
-            state: present
-          ignore_errors: "{{ ansible_check_mode }}"
+    - name: "PLAYBOCK        : Set Authorized Key."
+      authorized_key:
+        user: ansible
+        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+        state: present
+      ignore_errors: "{{ ansible_check_mode }}"

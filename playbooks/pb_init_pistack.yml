@@ -37,7 +37,7 @@
       ignore_errors: "{{ ansible_check_mode }}"
 
     - name: Print 
-        ansible.builtin.debug:
+      ansible.builtin.debug:
         msg: "System {{ inventory_hostname }}"
 
     - name: Set a hostname

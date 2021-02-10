@@ -3,7 +3,7 @@
   hosts: server
 
   pre_tasks:
-    - name: "PLAYBOOK        : Ping using Root User."
+    - name: "PLAYBOOK        : Ping {inventory_hostname} using Root User."
       ping: 
 
   tasks:
@@ -21,7 +21,7 @@
         uid: 20020
         state: present
             
-    - name: "PLAYBOCK        : Mange Sudoer for Ansible User."
+    - name: "PLAYBOCK        : Mange Sudoers for Ansible User."
       lineinfile:
         path: /etc/sudoers.d/ansible
         line: 'ansible ALL=(ALL) NOPASSWD: ALL'
@@ -35,10 +35,6 @@
         key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
         state: present
       ignore_errors: "{{ ansible_check_mode }}"
-
-    - name: Print names
-      ansible.builtin.debug:
-        msg: System {{ inventory_hostname }}  {{ inventory_nodename }}
 
     - name: Set a hostname
       ansible.builtin.hostname:

@@ -1,4 +1,9 @@
 ---
+
+#
+# Example Call: ansible-playbook -i inventories/serverPi playbooks/pb_init_pistack.yml --limit server1Pi --vault-id @prompt
+#
+
 all:
   vars:
     serverpi_root_psw: !vault |

@@ -1,12 +1,20 @@
 ---
 all:
+  vars:
+    serverpi_root_psw: !vault |
+      $ANSIBLE_VAULT;1.1;AES256
+      39633064373233376636626237323539636234383764316462616435343263633363666666373436
+      3232616230336635313138323233636434313137326365320a373330326230323133316534353162
+      32643636376636623966336633353963353364323336326238313839326330356438326436393531
+      6133333536333736640a313366333539636664626465306264663336393735333831666161633266
+      3963
   children:
     servers:
-      hosts:
-        server1Pi:
-        server2Pi:
-        server3Pi:
       vars:    
         ansible_connection: ssh
         ansible_user: root
-        ansible_password: linux 
+        ansible_password: "{{ serverpi_root_psw }}"
+      hosts:
+        server1Pi:
+        server2Pi:
+        server3Pi:      

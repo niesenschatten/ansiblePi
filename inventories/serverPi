@@ -1,6 +1,6 @@
 ---
 all:
-  childreen:
+  children:
      servers:
       server1Pi:
         ansible_connection: ssh
@@ -13,4 +13,4 @@ all:
       server3Pi:
         ansible_connection: ssh
         ansible_user: root
-        ansible_password: linux
+        ansible_password: linux 

@@ -1,6 +1,6 @@
 ---
 - name: "PLAYBOOK        : Start Playbook to Shutdown PiStack."
-  hosts: server
+  hosts: servers
 
   tasks:
     - name: "PLAYBOOK        : Shutdown in one Minute."

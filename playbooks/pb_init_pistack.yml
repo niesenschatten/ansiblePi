@@ -1,9 +1,10 @@
 ---
 - name: "PLAYBOOK        : Start Playbook for PiStack."
   hosts: server
-  ansible_connection: ssh
-  ansible_user: root
-  ansible_password: linux
+  vars: 
+    ansible_connection: ssh
+    ansible_user: root
+    ansible_password: linux
 
   pre_tasks:
     - name: "PLAYBOOK        : Ping using Root User."

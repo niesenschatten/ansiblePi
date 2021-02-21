@@ -1,16 +1,12 @@
 ---
 all:
   children:
-     servers:
-      server1Pi:
-        ansible_connection: ssh
-        ansible_user: root
-        ansible_password: linux
-      server2Pi:
-        ansible_connection: ssh
-        ansible_user: root
-        ansible_password: linux
-      server3Pi:
+    servers:
+      hosts:
+        server1Pi:
+        server2Pi:
+        server3Pi:
+      vars:    
         ansible_connection: ssh
         ansible_user: root
         ansible_password: linux 

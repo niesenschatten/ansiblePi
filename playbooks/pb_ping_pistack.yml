@@ -4,3 +4,4 @@
   tasks:
     - name: "PLAYBOOK        : Ping using regular Ansible User."
       ping:
+      

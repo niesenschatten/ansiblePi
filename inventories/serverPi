@@ -21,7 +21,7 @@ all:
       6436656131653166630a373038633765323432646232643332313039323038383134653139316666
       3134
   children:
-    controller:
+    controllers:
       vars:    
         ansible_connection: local
         ansible_user: ansible

@@ -1,7 +1,8 @@
 ---
 - name: "PLAYBOOK        : Start Playbook for PiStack."
   hosts: servers
-
+  become: yes
+  
   pre_tasks:
     - name: "PLAYBOOK        : Ping using Root User."
       ping: 

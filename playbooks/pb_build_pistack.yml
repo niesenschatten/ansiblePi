@@ -7,52 +7,30 @@
       ping: 
 
   tasks:
-# For openSuse use systemd ; got it by trying LOL
-    - name: "PLAYBOOK        : Set hostname."
-      ansible.builtin.hostname:
-        name: "{{ inventory_hostname }}"
-        use: systemd
 
-    - name: "PLAYBOOK        : Set TimeZone."
-      community.general.timezone:
-        name: Europe/Zurich
+    - name: "PLAYBOOK        : Zipper update."
+      community.general.zypper:
+        name: '*'
+        state: dist-upgrade
+        allow_vendor_change: true
+        update_cache: yes
 
-    - name: "PLAYBOOK        : Set Keybord."
-      ansible.builtin.command: "yast2 keyboard set 'layout=german-ch'"
+    - name: "PLAYBOOK        : Update all packages on OpenSUSE/SUSE Linux."
+      community.general.zypper:
+        name: '*'
+        state: latest
 
-    - name: "PLAYBOOK        : Set a message of the day"
-      copy:
-        dest: /etc/motd
-        src: etc/motd
-        owner: root
-        group: root
-        mode: 0644
+    - name: "PLAYBOOK        : Check if a reboot is needed on all SUSE/OpenSUSE based servers."
+      register: linux_reboot_required_file
+      stat: path=/boot/do_purge_kernels get_md5=no
 
-    - name: "PLAYBOOK        : Mange Ansible Group."
-      group: 
-        name: ansible
-        gid: 20020
-        state: present
-
-    - name: "PLAYBOOK        : Mange Ansible User."
-      user:
-        name: ansible
-        group: ansible
-        home: 
-        uid: 20020
-        state: present
-            
-    - name: "PLAYBOOK        : Mange Sudoers for Ansible User."
-      lineinfile:
-        path: /etc/sudoers.d/ansible
-        line: 'ansible ALL=(ALL) NOPASSWD: ALL'
-        mode: 0440
-        create: yes
-        state: present
-
-    - name: "PLAYBOOK        : Set Authorized Key."
-      authorized_key:
-        user: ansible
-        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
-        state: present
-      ignore_errors: "{{ ansible_check_mode }}"
+    - name: "PLAYBOOK        : Reboot the SUSE/OpenSUSE box if kernel updated."
+      reboot:
+        msg: "Reboot initiated by Ansible for kernel updates!"
+          connect_timeout: 5
+          reboot_timeout: 300
+          pre_reboot_delay: 0
+          post_reboot_delay: 30
+          test_command: uptime
+        when: linux_reboot_required_file.stat.exists
+        

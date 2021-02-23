@@ -7,6 +7,7 @@
     - name: "PLAYBOOK        : Ping using Root User."
       ping: 
 
+# We use dist-update since we are using tumble weed
   tasks:
     - name: "PLAYBOOK        : Update all packages on OpenSUSE/SUSE Linux."
       community.general.zypper:

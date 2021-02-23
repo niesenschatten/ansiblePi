@@ -2,6 +2,7 @@
 - name: "PLAYBOOK        : Start Playbook for PiStack."
   hosts: servers
 
+# This is optional, but usefull wen not gathering acts
   pre_tasks:
     - name: "PLAYBOOK        : Ping using Root User."
       ping: 
@@ -56,3 +57,4 @@
         key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
         state: present
       ignore_errors: "{{ ansible_check_mode }}"
+      

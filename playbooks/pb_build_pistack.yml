@@ -11,4 +11,4 @@
   tasks:
     - name: "PLAYBOOK        : Ping using Root User." 
       include_role:
-        name: ro_distro_update.yml
+        name: ro_distro_update

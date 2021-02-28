@@ -57,9 +57,3 @@
         key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
         state: present
       ignore_errors: "{{ ansible_check_mode }}"
-
-    - name: "PLAYBOOK        : Password for Root User."
-      ansible.builtin.name: 
-        name: root
-        update_password: always
-        password: linux

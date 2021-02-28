@@ -1,7 +1,7 @@
 ---
 
 #
-# Example Call: ansible-playbook -i inventories/serverPi playbooks/pb_init_pistack.yml --limit server1Pi --vault-id @prompt
+# Example Call: ansible-playbook -i inventories/serverPi_root playbooks/pb_ping_pistack.yml --vault-id @prompt
 #
 
 all:

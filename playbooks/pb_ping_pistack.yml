@@ -1,5 +1,10 @@
 ---
-- name: "PLAYBOOK        : Start Playbook for PiStack."
+
+#
+# Example Call: ansible-playbook -i inventories/serverPi_root playbooks/pb_ping_pistack.yml --vault-id @prompt
+#
+
+  - name: "PLAYBOOK        : Start Playbook for PiStack."
   hosts: all
 
   tasks:

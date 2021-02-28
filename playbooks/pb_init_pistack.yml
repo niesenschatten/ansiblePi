@@ -60,5 +60,5 @@
 
     - name: "PLAYBOOK        : Password for Root User."
       ansible.builtin.name: root
-      update_password: always
-      password: linux
+        update_password: always
+        password: linux

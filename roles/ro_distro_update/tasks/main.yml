@@ -10,7 +10,7 @@
       stat: path=/boot/do_purge_kernels get_md5=no
 
     - name: "PLAYBOOK        : Reboot the SUSE/OpenSUSE box if kernel updated."
-      reboot:
+      ansible.builtin.reboot:
         msg: "Reboot initiated by Ansible for kernel updates."
         connect_timeout: 5
         reboot_timeout: 300

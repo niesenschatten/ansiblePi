@@ -6,6 +6,7 @@
 
 all:
   vars:
+    ansible_python_interpreter: /usr/bin/python3
     root_psw: !vault |
       $ANSIBLE_VAULT;1.1;AES256
       34333031373931366364616364393536346161363937656330646463366631346632326236643335

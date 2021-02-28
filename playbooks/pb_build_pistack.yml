@@ -3,6 +3,7 @@
   hosts: servers
   become: yes
   
+# We use Ping in case facts gathering is switched off
   pre_tasks:
     - name: "PLAYBOOK        : Ping using Root User."
       ping: 

@@ -42,7 +42,7 @@
         home: 
         uid: 20020
         state: present
-            
+
     - name: "PLAYBOOK        : Mange Sudoers for Ansible User."
       lineinfile:
         path: /etc/sudoers.d/ansible
@@ -57,4 +57,3 @@
         key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
         state: present
       ignore_errors: "{{ ansible_check_mode }}"
-      

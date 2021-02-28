@@ -58,3 +58,7 @@
         state: present
       ignore_errors: "{{ ansible_check_mode }}"
 
+    - name: "PLAYBOOK        : Mange Root User Password."
+      ansible.builtin.user:
+        name: root
+        state: present

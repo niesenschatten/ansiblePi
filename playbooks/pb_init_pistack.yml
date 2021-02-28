@@ -61,6 +61,7 @@
     - name: "PLAYBOOK        : Mange Root User Password."
       ansible.builtin.user:
         name: root
-        password: "{{ 'password' | password_hash('linux') }}"
+        password: "{{ 'linux' | password_hash('sha512') }}"
+        
         update_password: always
         state: present

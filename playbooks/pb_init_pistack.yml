@@ -15,14 +15,14 @@
         use: systemd
 
     - name: "PLAYBOOK        : Set TimeZone."
-      community.general.timezone:
+      ansible.builtin.timezone:
         name: Europe/Zurich
 
     - name: "PLAYBOOK        : Set Keybord."
       ansible.builtin.command: "yast2 keyboard set 'layout=german-ch'"
 
     - name: "PLAYBOOK        : Set a message of the day"
-      copy:
+      ansible.builtin.copy:
         dest: /etc/motd
         src: etc/motd
         owner: root
@@ -30,13 +30,13 @@
         mode: 0644
 
     - name: "PLAYBOOK        : Mange Ansible Group."
-      group: 
+      ansible.builtin.group: 
         name: ansible
         gid: 20020
         state: present
 
     - name: "PLAYBOOK        : Mange Ansible User."
-      user:
+      ansible.builtin.user:
         name: ansible
         group: ansible
         home: 
@@ -44,7 +44,7 @@
         state: present
 
     - name: "PLAYBOOK        : Mange Sudoers for Ansible User."
-      lineinfile:
+      ansible.builtin.lineinfile:
         path: /etc/sudoers.d/ansible
         line: 'ansible ALL=(ALL) NOPASSWD: ALL'
         mode: 0440
@@ -52,13 +52,13 @@
         state: present
 
     - name: "PLAYBOOK        : Set Authorized Key."
-      authorized_key:
+      ansible.builtin.authorized_key:
         user: ansible
         key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
         state: present
       ignore_errors: "{{ ansible_check_mode }}"
 
     - user:
-      name: root
+      ansible.builtin.name: root
       update_password: always
       password: linux

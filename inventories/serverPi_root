@@ -15,8 +15,8 @@ all:
       3665
 
   children:
-      controllers:
-      vars:    
+    controllers:
+      vars:
         ansible_connection: local
       hosts:
         ansiblePi:
@@ -29,4 +29,4 @@ all:
       hosts:
         server1Pi:
         server2Pi:
-        server3Pi:   
+        server3Pi:

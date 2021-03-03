@@ -23,7 +23,7 @@
 
     - name: "PLAYBOOK        : Set a message of the day"
       ansible.builtin.copy:
-        dest: /etc/motd
+        dest: "/etc/motd/{{ inventory_hostname }}""
         src: etc/motd
         owner: root
         group: root
@@ -62,7 +62,5 @@
       ansible.builtin.user:
         name: root
         password: "{{ 'linux' | password_hash('sha512') }}"
-        
         update_password: always
         state: present
-        

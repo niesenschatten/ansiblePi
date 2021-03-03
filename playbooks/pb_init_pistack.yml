@@ -1,6 +1,6 @@
 ---
 - name: "PLAYBOOK        : Start Playbook for PiStack."
-  hosts: servers
+  hosts: all
 
 # This is optional, but usefull wen not gathering acts
   pre_tasks:

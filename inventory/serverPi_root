@@ -18,7 +18,9 @@ all:
   children:
     controllers:
       vars:
-        ansible_connection: local
+        ansible_connection: ssh
+        ansible_user: root
+        ansible_password: "{{ root_psw }}"
       hosts:
         ansiblePi:
         

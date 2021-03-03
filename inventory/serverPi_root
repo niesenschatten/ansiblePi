@@ -5,31 +5,22 @@
 #
 
 all:
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
-    root_psw: !vault |
-      $ANSIBLE_VAULT;1.1;AES256
-      34333031373931366364616364393536346161363937656330646463366631346632326236643335
-      3561356361396538656434333739643561313661626333380a386363386461356132653338316431
-      61386239653135313665613063383238323066383138306638613839376432633837623762346233
-      6138353863393931350a373834303434643731353936326230633539623262626230326561396536
-      3665
-
   children:
     controllers:
-      vars:
-        ansible_connection: ssh
-        ansible_user: root
-        ansible_password: "{{ root_psw }}"
       hosts:
         ansiblePi:
-        
-    servers:
-      vars:    
+      vars:
         ansible_connection: ssh
-        ansible_user: root
         ansible_password: "{{ root_psw }}"
+        ansible_user: root
+    servers:
       hosts:
         server1Pi:
         server2Pi:
         server3Pi:
+      vars:
+        ansible_connection: ssh
+        ansible_password: "{{ root_psw }}"
+        ansible_user: root
+  vars: 
+    ansible_python_interpreter: /usr/bin/python3

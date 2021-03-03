@@ -4,8 +4,8 @@
 # Example Call: ansible-playbook -i inventories/serverPi_root playbooks/pb_ping_pistack.yml --vault-id @prompt
 #
 
-  - name: "PLAYBOOK        : Start Playbook for PiStack."
-    hosts: all
+- name: "PLAYBOOK        : Start Playbook for PiStack."
+  hosts: all
 
   tasks:
     - name: "PLAYBOOK        : Ping using regular Ansible User."

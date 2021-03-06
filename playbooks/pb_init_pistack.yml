@@ -23,7 +23,7 @@
 
     - name: "PLAYBOOK        : Set a message of the day"
       ansible.builtin.copy:
-        dest: "/etc/motd/{{ inventory_hostname }}""
+        dest: "/etc/motd/{{ inventory_hostname }}"
         src: etc/motd
         owner: root
         group: root

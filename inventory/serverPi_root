@@ -23,6 +23,7 @@ all:
         ansible_password: "{{ root_psw }}"
         ansible_user: root
   vars: 
+    host_key_checking = False
     ansible_python_interpreter: /usr/bin/python3
     root_psw: !vault |
           $ANSIBLE_VAULT;1.1;AES256

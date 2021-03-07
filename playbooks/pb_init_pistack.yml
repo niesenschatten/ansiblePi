@@ -21,7 +21,7 @@
     - name: "PLAYBOOK        : Set Keybord."
       ansible.builtin.command: "yast2 keyboard set 'layout=german-ch'"
 
-    - name: "PLAYBOOK        : Set a message of the day"
+    - name: "PLAYBOOK        : Set a message of the day."
       ansible.builtin.copy:
         dest: /etc/motd 
         src: "etc/motd/{{ inventory_hostname }}"

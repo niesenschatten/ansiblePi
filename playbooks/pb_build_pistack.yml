@@ -10,6 +10,6 @@
 
 # We use dist-update since we are using tumbleweed
   tasks:
-    - name: "PLAYBOOK        : Ping using Root User." 
+    - name: "PLAYBOOK        : Distro Update." 
       include_role:
         name: ro_distro_update
